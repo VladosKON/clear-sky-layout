@@ -1,5 +1,6 @@
 const fs=require('fs'),path=require('path'),{load}=require('./build/node_modules/cheerio');
 const fragments=JSON.parse(fs.readFileSync(path.join(__dirname,'fragments.json'),'utf8').replace(/^\uFEFF/,''));
+const optimized=JSON.parse(fs.readFileSync(path.join(__dirname,'optimized/manifest.json'),'utf8'));
 const icons=JSON.parse(fs.readFileSync(path.join(__dirname,'icons.json'),'utf8'));
 const b64=(data,type)=>`data:${type};base64,${Buffer.from(data).toString('base64')}`;
 let markup=`<div class="editor"><header id="toolbar">${fragments.toolbar}</header><div id="viewport"><div id="page-bg"><div id="workspace"><nav id="navigation">${fragments.nav}</nav><main id="dashboard"><div id="search">${fragments.search}</div><div id="tabs">${fragments.tabs}</div><section id="widgets">${fragments.dashboard}</section></main><aside id="rail"><span class="user-initials">СС</span><button title="Добавить">＋</button><div class="rail-bottom"><button title="Звонки">♧</button><button title="Сообщения">♧</button><button title="Помощь">?</button></div></aside><aside id="feed">${fragments.feed}</aside></div></div><aside id="tools">${fragments.tools}</aside></div></div><aside id="system"><div>ФОН ЦУ</div><fieldset><label><input type="radio" name="feed-bg" value="custom" checked>Настраивается отдельно</label><label><input type="radio" name="feed-bg" value="none">Всегда без фона</label></fieldset></aside><div id="popup" hidden role="dialog" aria-label="Настройки оформления"></div><template id="background-template">${fragments.background}</template><template id="palette-template">${fragments.palette}</template><input id="background-upload" type="file" accept="image/*" hidden><input id="logo-upload" type="file" accept="image/*" hidden><div id="status" role="status"></div>`;
@@ -10,7 +11,7 @@ const $=load(markup,{decodeEntities:false});
 $('link[rel=preload]').remove();
 // Preserve every original image and mask locally, embedded for portable offline use.
 markup=$('body').html();
-markup=markup.replace(/https:\/\/www\.figma\.com\/api\/mcp\/asset\/([\w.-]+)/g,(url,name)=>{const p=path.join(__dirname,'assets',name);if(!fs.existsSync(p)||!fs.statSync(p).size)throw Error('Missing '+name);return b64(fs.readFileSync(p),name.endsWith('.svg')?'image/svg+xml':'image/png');});
+markup=markup.replace(/https:\/\/www\.figma\.com\/api\/mcp\/asset\/([\w.-]+)/g,(url,name)=>{const p=path.join(__dirname,'assets',name);if(!fs.existsSync(p)||!fs.statSync(p).size)throw Error('Missing '+name);const compressed=optimized[name];return compressed?b64(fs.readFileSync(path.join(__dirname,'optimized',compressed)),'image/webp'):b64(fs.readFileSync(p),name.endsWith('.svg')?'image/svg+xml':'image/png');});
 const d=load(markup);
 // Render each widget marker once, using the original Figma silhouette as a mask.
 d('#widgets [data-name="Маркер"]').empty().addClass('widget-marker');
@@ -55,11 +56,20 @@ let css='*{box-sizing:border-box;border-width:0;border-style:solid;border-color:
 for(const c of classes){let r=rule(c);if(r)css+='.'+escape(c)+'{'+r+'}\n';}
 console.log('Unmapped utility classes:',unknown);
 css=css.replaceAll('Arial,sans-serif','Inter,Arial,sans-serif');
-for(const [weight,file] of [[400,'Regular'],[500,'Medium'],[600,'SemiBold'],[700,'SemiBold']])css+='@font-face{font-family:Inter;font-weight:'+weight+';src:url('+b64(fs.readFileSync(path.join(__dirname,'assets/fonts/Inter-'+file+'-hint.ttf')),'font/ttf')+') format("truetype");font-display:swap}';
+for(const [weight,file] of [[400,'Regular'],[500,'Medium'],['600 700','SemiBold']])css+='@font-face{font-family:Inter;font-weight:'+weight+';src:url('+b64(fs.readFileSync(path.join(__dirname,'assets/fonts/Inter-'+file+'-hint.ttf')),'font/ttf')+') format("truetype");font-display:swap}';
 css+=fs.readFileSync(path.join(__dirname,'page.css'),'utf8');
 css+=':root{--transparency-grid:url("'+b64(fs.readFileSync(path.join(__dirname,'assets/transparency-grid.svg')),'image/svg+xml')+'");--widget-marker-shape:url("'+b64(fs.readFileSync(path.join(__dirname,'assets/widget-marker.svg')),'image/svg+xml')+'")}';
+// Store large image data once, including images inside inert popup templates.
+const embeddedImages=[],imageIds=new Map();
+let pageMarkup=d('body').html().replace(/src="(data:image\/[^"<>]+)"/g,(match,src)=>{
+ if(src.length<4096)return match;
+ let id=imageIds.get(src);if(id===undefined){id=embeddedImages.length;imageIds.set(src,id);embeddedImages.push(src);}
+ return 'data-embedded-image="'+id+'"';
+});
+const hydrateImages='(()=>{const node=document.getElementById("embedded-images");const images=JSON.parse(node.textContent);function hydrate(root){root.querySelectorAll("[data-embedded-image]").forEach(img=>{img.src=images[Number(img.dataset.embeddedImage)];img.removeAttribute("data-embedded-image")});root.querySelectorAll("template").forEach(template=>hydrate(template.content))}hydrate(document);node.remove()})();';
+const imagePayload='<script id="embedded-images" type="application/json">'+JSON.stringify(embeddedImages)+'</script><script>'+hydrateImages+'</script>';
 const script=fs.readFileSync(path.join(__dirname,'interactions.js'),'utf8');
-const html='<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Настройка оформления — Saby</title><style>'+css+'</style></head><body>'+d('body').html()+'<script>'+script+'</script></body></html>';
+const html='<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Настройка оформления — Saby</title><style>'+css+'</style></head><body>'+pageMarkup+imagePayload+'<script>'+script+'</script></body></html>';
 fs.writeFileSync(path.join(__dirname,'../outputs/index.html'),html);
 fs.writeFileSync(path.join(__dirname,'classes.json'),JSON.stringify([...classes],null,2));
 console.log('Created HTML',html.length,'bytes');

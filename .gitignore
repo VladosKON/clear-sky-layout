@@ -8,3 +8,4 @@ outputs/*.zip
 context/
 scripts/github-admin.ps1
 _site/
+work/optimized/
