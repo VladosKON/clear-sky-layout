@@ -1,3 +1,15 @@
+const imgImg = "https://www.figma.com/api/mcp/asset/342d5609-cded-4808-889e-55a562310d62.png";
+const imgImg1 = "https://www.figma.com/api/mcp/asset/0bcf8194-8710-43e3-8f63-2c10f87341bd.png";
+const imgImg2 = "https://www.figma.com/api/mcp/asset/eb5131db-d812-4e6f-8aa7-583efebc7ea5.png";
+const imgImg3 = "https://www.figma.com/api/mcp/asset/a1292a82-4f14-4d02-913b-cc9ed3889da5.png";
+const imgImg4 = "https://www.figma.com/api/mcp/asset/626e986a-5d98-4c85-a757-22451dbe71fa.png";
+const imgImg5 = "https://www.figma.com/api/mcp/asset/998fb56b-e423-4532-8c68-fdbfa1c20fd5.png";
+const imgImg6 = "https://www.figma.com/api/mcp/asset/55ec6563-91e6-443e-8a28-b2ec61543407.png";
+const imgImg7 = "https://www.figma.com/api/mcp/asset/388757b6-84a4-4435-8650-a872b7aebc3b.png";
+const imgImg8 = "https://www.figma.com/api/mcp/asset/acdd93fa-8ec9-49f2-8c9a-29c735f6d92a.png";
+const imgImg9 = "https://www.figma.com/api/mcp/asset/60ea499c-2922-4d5a-a27c-1cea9aa74b62.png";
+const imgImg10 = "https://www.figma.com/api/mcp/asset/5e05ccc8-c1e9-4618-8bc6-e44b7abc47e7.png";
+const imgImg11 = "https://www.figma.com/api/mcp/asset/7e4c1319-4a37-4f5e-81a1-a6d2f9adc946.png";
 const imgLine1 = "https://www.figma.com/api/mcp/asset/cd3ae22b-aa2c-4a07-af58-3eabeb2fed24.svg";
 const imgBreadcrumbsArrow = "https://www.figma.com/api/mcp/asset/cad2ef12-bc63-476e-adff-57f9dec3ec2e.svg";
 const imgLine2 = "https://www.figma.com/api/mcp/asset/8e27e36c-c034-454f-824d-1cf5d7d33c19.svg";
@@ -6,19 +18,6 @@ const imgVector6 = "https://www.figma.com/api/mcp/asset/b218090c-b107-45ba-a032-
 const imgVector7 = "https://www.figma.com/api/mcp/asset/0fce6d49-3217-422d-a908-700d8ddab4f6.svg";
 const imgTypeLinkButtonHoverFalseClickFalseIconSizeIconSizeCloseButton = "https://www.figma.com/api/mcp/asset/045c9761-32d3-482d-9e7c-7ef33ac5791d.svg";
 const imgCursorArrow = "https://www.figma.com/api/mcp/asset/52e8d7c3-dcec-41fb-9558-0b8b9820db9b.svg";
-const imgImg = "https://www.figma.com/api/mcp/asset/4d1b2ddb-dac0-49b7-9d0d-402f54866677.png";
-const imgImg1 = "https://www.figma.com/api/mcp/asset/db5d3123-8a2a-4eab-9111-c09c5058325e.png";
-const imgImg2 = "https://www.figma.com/api/mcp/asset/f78cf82a-0153-46c3-bb4e-4e26620055cc.png";
-const imgImg3 = "https://www.figma.com/api/mcp/asset/65fd0ed7-b19c-452d-b96a-bf21c44801ef.png";
-const imgImg4 = "https://www.figma.com/api/mcp/asset/4cf4cd12-a5bd-4ad8-8640-d00c0fcd430c.png";
-const imgImg5 = "https://www.figma.com/api/mcp/asset/e815f30d-6afc-4141-98fa-7c7a205b3b3d.png";
-const imgImg6 = "https://www.figma.com/api/mcp/asset/c81efa02-3083-49fd-928b-6023cd781f07.png";
-const imgImg7 = "https://www.figma.com/api/mcp/asset/96a47a93-8862-4657-98ac-e50b94c1be57.png";
-const imgImg8 = "https://www.figma.com/api/mcp/asset/a2bd4c95-0973-4653-8728-d66df135b6ce.png";
-const imgImg9 = "https://www.figma.com/api/mcp/asset/73de5b7d-2088-443c-b0d3-2caaf2c1fa17.png";
-const imgImg10 = "https://www.figma.com/api/mcp/asset/f6974093-55b1-4a33-8387-73fe316d3d53.png";
-const imgImg11 = "https://www.figma.com/api/mcp/asset/7afb68f8-a26d-463d-8d39-d7263542560f.png";
-const imgImg12 = "https://www.figma.com/api/mcp/asset/27ea8518-1e6a-4568-93d3-838bda19e407.png";
 const imgShape = "https://www.figma.com/api/mcp/asset/5cf4ec43-e7f3-4b2b-9fa5-9491722d1265.svg";
 const img = "https://www.figma.com/api/mcp/asset/19626858-5c32-47f7-8807-dc89c4d4a597.svg";
 
@@ -552,10 +551,7 @@ function Window({ className, state = "default" }: WindowProps) {
             <div className="gap-x-[8px] gap-y-[8px] grid grid-cols-[repeat(2,minmax(0,1fr))] grid-rows-[_______91px_91px_91px_91px_91px_91px_91px] relative shrink-0 w-[334px]" data-node-id="2149:58831" data-name="ImagesCatalog">
               <button className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch cursor-pointer flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10074" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10074;430:10037" data-name="img">
-                  <div aria-hidden className="absolute inset-0 pointer-events-none">
-                    <img alt="" className="absolute max-w-none object-cover size-full" src={imgImg} />
-                    <img alt="" className="absolute max-w-none object-cover size-full" src={imgImg1} />
-                  </div>
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10074;433:12135" role="button" tabIndex="0" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10074;433:12135;13801:187741" data-name="Button">
@@ -577,10 +573,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </button>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10084" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10084;430:10037" data-name="img">
-                  <div aria-hidden className="absolute inset-0 pointer-events-none">
-                    <img alt="" className="absolute max-w-none object-cover size-full" src={imgImg} />
-                    <img alt="" className="absolute max-w-none object-cover size-full" src={imgImg2} />
-                  </div>
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg1} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10084;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10084;433:12135;13801:187741" data-name="Button">
@@ -602,7 +595,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10096" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10096;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg3} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg2} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10096;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10096;433:12135;13801:187741" data-name="Button">
@@ -624,7 +617,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10114" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10114;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg4} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg3} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10114;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10114;433:12135;13801:187741" data-name="Button">
@@ -646,7 +639,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10123" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10123;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg5} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg4} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10123;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10123;433:12135;13801:187741" data-name="Button">
@@ -668,7 +661,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10129" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10129;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg6} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg5} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10129;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10129;433:12135;13801:187741" data-name="Button">
@@ -690,7 +683,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10141" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10141;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg7} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg6} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10141;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10141;433:12135;13801:187741" data-name="Button">
@@ -712,7 +705,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10142" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10142;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg8} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg7} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10142;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10142;433:12135;13801:187741" data-name="Button">
@@ -734,7 +727,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10159" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10159;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg9} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg8} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10159;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10159;433:12135;13801:187741" data-name="Button">
@@ -756,7 +749,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10160" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10160;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg10} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg9} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10160;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10160;433:12135;13801:187741" data-name="Button">
@@ -778,7 +771,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10177" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10177;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg11} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg10} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10177;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10177;433:12135;13801:187741" data-name="Button">
@@ -800,7 +793,7 @@ function Window({ className, state = "default" }: WindowProps) {
               </div>
               <div className="bg-white border border-[var(--border\/border-color,#eaeaea)] border-solid content-stretch flex flex-col items-start justify-self-stretch overflow-clip relative rounded-[8px] self-stretch shrink-0" data-node-id="I2149:58831;430:10178" data-name="Фото в коллекции [06.07.26]">
                 <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I2149:58831;430:10178;430:10037" data-name="img">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg12} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" data-background-image="true" src={imgImg11} />
                 </div>
                 <div className="absolute content-stretch flex flex-col items-start opacity-0 right-[5px] top-[5px]" data-node-id="I2149:58831;430:10178;433:12135" data-name="Редактировать Local">
                   <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--border-radius\/border-radius_2xs,4px)] shrink-0 size-[24px]" data-node-id="I2149:58831;430:10178;433:12135;13801:187741" data-name="Button">
