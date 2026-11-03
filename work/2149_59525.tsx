@@ -343,15 +343,7 @@ function Window({ className, state = "default" }: WindowProps) {
           <div className="content-stretch flex gap-[10px] items-center justify-end pt-px relative shrink-0" data-node-id="2149:58809">
             <div className="content-stretch flex gap-[6px] items-center pr-[2px] relative shrink-0" data-node-id="2149:58810" data-name="buttonsWrap">
               <div className="content-stretch flex flex-col items-center justify-center relative rounded-[var(--components\/button\/border-radius_button,100px)] shrink-0 size-[28px]" data-node-id="2149:58811" data-name="ghost">
-                <div className="content-stretch flex flex-[1_0_0] items-center min-h-px relative" data-node-id="I2149:58811;17890:9803" data-name="_buttonContent">
-                  <div className="content-stretch flex items-center relative shrink-0" data-node-id="I2149:58811;17890:9803;17890:165" data-name="iconWrap">
-                    <div className="content-stretch flex flex-col items-center justify-center relative shrink-0" data-node-id="I2149:58811;17890:9803;17890:166" data-name="icons/font">
-                      <div className="content-stretch flex flex-col items-center justify-center pb-px relative shrink-0 size-[16px]" data-node-id="I2149:58811;17890:9803;17890:166;17887:22647" data-name="iconWrap">
-                        <p className="[word-break:break-word] font-[family-name:var(--icon\/font-family\/s_icon_font-family,'cbuc-icons:Regular')] leading-[normal] not-italic relative shrink-0 text-[color:var(--icon\/secondary_icon-color,#656c87)] text-[length:var(--icon\/icon_size\/icon-size_s,16px)] whitespace-nowrap" data-node-id="I2149:58811;17890:9803;17890:166;17887:22661">{`\uE671`}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <img alt="" width="28" height="28" src="https://www.figma.com/api/mcp/asset/background-attachment.png" />
               </div>
               <div className="content-stretch flex items-center justify-center relative rounded-[16px] shrink-0 size-[28px]" data-node-id="2149:58812" data-name="Дополнительнве кнопки">
                 <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="I2149:58812;6560:17087" data-name="eyedropper-alt">
