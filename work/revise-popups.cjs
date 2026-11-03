@@ -1,0 +1,29 @@
+const fs=require('fs'),path=require('path');
+const file=path.join(__dirname,'interactions.js');let source=fs.readFileSync(file,'utf8');
+function replaceBetween(start,end,text){const a=source.indexOf(start),b=source.indexOf(end,a);if(a<0||b<0)throw Error('Missing function boundary');source=source.slice(0,a)+text+'\n'+source.slice(b);}
+replaceBetween('function open(','function colour(',`function fitPopup(anchor){
+const r=anchor.getBoundingClientRect();const width=popup.getBoundingClientRect().width;
+const top=Math.max(8,Math.min(r.bottom+6,innerHeight-120));
+popup.style.left=Math.max(8,Math.min(r.left-12,innerWidth-width-12))+'px';
+popup.style.top=top+'px';popup.style.maxHeight=Math.max(100,innerHeight-top-12)+'px';
+}
+function open(html,anchor,width=362){lastFocus=anchor;popup.innerHTML=html;popup.hidden=false;popup.style.width='max-content';popup.style.maxWidth='calc(100vw - 24px)';popup.style.maxHeight='calc(100vh - 24px)';
+const panel=$('.panel',popup);if(panel)panel.style.width=width+'px';fitPopup(anchor);
+const closeButton=$('[data-name="close/closeButton"]',popup)||$('[data-name="_closeButton"]',popup);if(closeButton){closeButton.setAttribute('role','button');closeButton.tabIndex=0;closeButton.setAttribute('aria-label','Закрыть');closeButton.onclick=close;}$$('.close',popup).forEach(x=>x.onclick=close);}
+function parseColour(value){const el=document.createElement('span');el.style.color=value;el.hidden=true;document.body.append(el);const rgb=getComputedStyle(el).color.match(/[\\d.]+/g)?.map(Number)||[248,248,248];el.remove();return {hex:'#'+rgb.slice(0,3).map(n=>Math.round(n).toString(16).padStart(2,'0')).join('').toUpperCase(),rgb,alpha:Math.round((rgb[3]??1)*100)};}
+function effectiveColour(target){const alpha=state[target+'Alpha'];if(alpha===undefined||/gradient\\(|url\\(/.test(state[target]))return state[target];const c=parseColour(state[target]).rgb;return 'rgba('+c.slice(0,3).join(',')+','+alpha/100+')';}
+function inlineColourFields(target){
+const parsed=parseColour(state[target]),alpha=state[target+'Alpha']??parsed.alpha;
+let hexInputs=[];const hiddenPicker=document.createElement('input');hiddenPicker.type='color';hiddenPicker.value=parsed.hex;hiddenPicker.className='native-colour-picker';hiddenPicker.tabIndex=-1;hiddenPicker.setAttribute('aria-label','Другой цвет');popup.append(hiddenPicker);
+function updateHex(value,commitChange){let hex=value.trim();if(!hex.startsWith('#'))hex='#'+hex;if(/^#[0-9a-f]{3}$/i.test(hex))hex='#'+[...hex.slice(1)].map(x=>x+x).join('');if(!/^#[0-9a-f]{6}$/i.test(hex))return false;state[target]=hex.toUpperCase();hiddenPicker.value=hex;hexInputs.forEach(x=>{if(x!==document.activeElement)x.value=state[target]});apply();const preview=$('[data-name="Component 99"]',popup);if(preview)preview.style.background=effectiveColour(target);if(commitChange)commit();return true;}
+$$('[data-name="Код цвета"]',popup).forEach((container,index)=>{const p=$('p',container);if(!p)return;const input=document.createElement('input');input.type='text';input.className='inline-colour-value';input.value=parsed.hex;input.maxLength=7;input.spellcheck=false;input.setAttribute('aria-label',index?'HEX '+(index+1):'HEX');input.oninput=()=>{input.setAttribute('aria-invalid',String(!updateHex(input.value,false)))};input.onchange=()=>{if(updateHex(input.value,true)){input.value=state[target];input.removeAttribute('aria-invalid')}else{input.value=parseColour(state[target]).hex;input.removeAttribute('aria-invalid');announce('Введите цвет в формате #RRGGBB')}};input.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();input.blur()}};p.replaceWith(input);hexInputs.push(input);});
+$$('[data-name="Прозрачность"]',popup).forEach((container,index)=>{const p=$$('p',container).find(x=>/^\\d+(?:[.,]\\d+)?$/.test(x.textContent.trim()));if(!p)return;const input=document.createElement('input');input.type='number';input.min='0';input.max='100';input.step='1';input.value=alpha;input.className='inline-opacity-value';input.setAttribute('aria-label',index?'Прозрачность '+(index+1):'Прозрачность');input.oninput=()=>{if(input.value==='')return;const n=Number(input.value);if(n<0||n>100){input.setAttribute('aria-invalid','true');return}input.removeAttribute('aria-invalid');state[target+'Alpha']=n;apply();};input.onchange=()=>{const n=Math.max(0,Math.min(100,Number(input.value)||0));input.value=n;change(target+'Alpha',n)};input.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();input.blur()}};p.replaceWith(input);});
+hiddenPicker.oninput=()=>{updateHex(hiddenPicker.value,false);hexInputs.forEach(x=>x.value=hiddenPicker.value.toUpperCase())};hiddenPicker.onchange=()=>commit();const preview=$('[data-name="Component 99"]',popup);if(preview){preview.style.background=effectiveColour(target);preview.style.cursor='pointer';preview.onclick=()=>hiddenPicker.click()}
+$$('p',popup).filter(p=>p.textContent.trim()==='Другой цвет').forEach(p=>{p.style.cursor='pointer';p.onclick=()=>hiddenPicker.click()});
+return hiddenPicker;
+}`);
+const a=source.indexOf('const custom=document.createElement',source.indexOf('function colour('));const b=source.indexOf("$$('[data-name=\"Цвет\"]'",a);
+if(a<0||b<0)throw Error('Colour controls missing');source=source.slice(0,a)+'const picker=inlineColourFields(target);\n'+source.slice(b);
+source=source.replace('root.style.setProperty(v,state[k])','root.style.setProperty(v,effectiveColour(k))').replace("$('#page-bg').style.background=state.background","$('#page-bg').style.background=effectiveColour('background')").replace("state.feedMode==='none'?'transparent':state.feed","state.feedMode==='none'?'transparent':effectiveColour('feed')");
+source=source.replace("open($('#gradient-template').innerHTML,anchor,362);","open($('#gradient-template').innerHTML,anchor,362);inlineColourFields('background');");
+fs.writeFileSync(file,source);

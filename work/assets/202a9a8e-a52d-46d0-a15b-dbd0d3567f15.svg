@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 1968456486" clip-path="url(#clip0_0_2767)">
+<g id="Polygon 7">
+<path d="M10 0L18.6603 13.5H1.33975L10 0Z" fill="white"/>
+<mask id="stroke0_0_2767" fill="white">
+<path d="M10 0L18.6603 13.5H1.33975L10 0Z"/>
+</mask>
+<path d="M10 0L18.6603 13.5H1.33975L10 0Z" stroke-width="2" stroke="#EAEAEA" mask="url(#stroke0_0_2767)"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_2767">
+<rect width="20" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>

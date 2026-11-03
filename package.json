@@ -1,0 +1,10 @@
+{
+  "name": "clear-sky-layout",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "npm ci --prefix work/build --cache work/npm-cache",
+    "build": "node scripts/build.cjs",
+    "preview": "python -m http.server 8765 --bind 127.0.0.1 --directory outputs"
+  }
+}

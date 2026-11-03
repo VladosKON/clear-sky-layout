@@ -1,0 +1,1 @@
+const fs=require('fs'),p=require('path'),file=p.join(__dirname,'interactions.js');let s=fs.readFileSync(file,'utf8');s=s.replaceAll('2149:56274','1925:57123').replaceAll('2149:56278','1925:57584');fs.writeFileSync(file,s);

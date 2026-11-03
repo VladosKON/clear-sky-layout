@@ -1,0 +1,10 @@
+**/node_modules/
+work/npm-cache/
+work/build/*.js
+work/build/*.tsx
+work/fragments.json
+work/classes.json
+outputs/*.zip
+context/
+scripts/github-admin.ps1
+_site/
